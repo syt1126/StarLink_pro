@@ -1,2 +1,30 @@
-# StarLink_pro
-A WiFi-enabled Star Tracker based on M5Stack and UDP control.
+# StarLink_pro 🌟
+
+基于 M5Stack 的智能天文星体追踪模拟器/控制器。
+
+## ✨ 功能特点
+* **自动联网**：利用 `wifiCfg` 自动连接已保存的 WiFi，无需硬编码密码。
+* **UDP 控制**：通过 UDP 协议 (端口 8888) 接收 `RA` (赤经) 和 `Dec` (赤纬) 目标指令。
+* **双轴追踪**：驱动 Az (方位角) 和 Alt (高度角) 两个舵机进行追踪。
+* **可视化界面**：实时显示目标坐标、当前坐标、锁定状态和进度条。
+
+## 🛠️ 硬件需求
+* **主控**：M5Stack Core (Basic/Gray/Fire/Go)
+* **执行器**：360度连续旋转舵机 x 2
+  * **Azimuth (方位角)**: 连接 Port B
+  * **Altitude (高度角)**: 连接 Port C
+* **固件环境**：UiFlow (MicroPython)
+
+## 🚀 如何使用
+1. 使用 **M5Burner** 烧录 UiFlow 固件到 M5Stack。
+2. 将 `main.py` 代码通过 UiFlow IDE 或 VSCode 下载到设备。
+3. **首次运行**：
+   * 如果没有连接过 WiFi，设备会提示连接失败。
+   * 重启设备，按侧键进入 Setup -> Wi-Fi，连接你的热点。
+4. **正常运行**：
+   * 设备开机会自动显示 IP 地址。
+   * 使用上位机软件向该 IP 的 `8888` 端口发送 UDP 数据包。
+   * 数据格式字符串：`赤经,赤纬` (例如: `12.5,45.3`)。
+
+## 📷 截图
+(如果你有照片，可以在这里上传一张运行时的照片)
